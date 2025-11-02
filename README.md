@@ -4,7 +4,7 @@
 
 ## Frappe Site E-Commerce
 
-_Modern E-Commerce Website for ERPNext v15_
+_Modern E-Commerce Website for ERPNext v15_1
 
 ![Version](https://img.shields.io/badge/version-2.11.2025-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
