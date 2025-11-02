@@ -32,3 +32,16 @@ yarn install
 bench mariadb
 > DESCRIBE tabItem;  # Confirm field names before queries
 ```
+
+## Commit Changes and Update Version
+
+```bash
+cd ~/frappe-bench-15/apps/frappe_site
+python3 auto_commit.py
+```
+
+This command will:
+- Update the version in `frappe_site/__init__.py` to current date (DD.MM.YYYY format)
+- Update the version badge in `README.md`
+- Commit changes to git
+- Push changes to GitHub
