@@ -20,7 +20,6 @@ _Modern E-Commerce Website for ERPNext v15_
 **Built exactly like:**
 
 - 🌐 [Big Bird Foods](https://bigbirdfoods.com.pk/)
-- 🍰 [Habibah Sweets](https://habibahsweets.com/)
 
 📺 **Videos:** [YouTube Playlist](https://www.youtube.com/playlist?list=PLCU8QrFs82Wxqp64n6VjZJKW5Nl3WCW8g)
 
