@@ -1,6 +1,7 @@
 <template>
   <div class="products-page">
     <Navbar />
+    <Slideshow />
     <main class="main-content">
       <div class="container">
         <div class="products-header">
