@@ -35,10 +35,20 @@ function initFrappeSiteApp() {
 // Export function for manual initialization
 export default initFrappeSiteApp;
 
-// Auto-initialize when DOM is ready (for website)
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initFrappeSiteApp);
-} else {
-  // Use setTimeout to ensure container is created in Desk pages
-  setTimeout(initFrappeSiteApp, 100);
+// Make it available on window for manual initialization in Desk pages
+if (typeof window !== 'undefined') {
+  window.initFrappeSiteApp = initFrappeSiteApp;
+}
+
+// Auto-initialize when DOM is ready (for website only, not Desk pages)
+// Check if we're in Desk (has frappe.boot object) or website (no frappe.boot)
+const isDeskPage = typeof frappe !== 'undefined' && frappe.boot;
+
+if (!isDeskPage) {
+  // Only auto-initialize for website pages
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFrappeSiteApp);
+  } else {
+    setTimeout(initFrappeSiteApp, 100);
+  }
 }
