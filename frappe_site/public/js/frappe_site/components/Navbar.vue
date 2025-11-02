@@ -6,13 +6,12 @@
       </div>
       <ul class="navbar-menu">
         <li v-for="item in menuItems" :key="item.id">
-          <router-link :to="item.url">{{ item.label }}</router-link>
-        </li>
-        <li class="cart-icon">
-          <router-link to="/cart">
-            🛒
-            <span v-if="cartCount > 0" class="cart-badge">{{ cartCount }}</span>
-          </router-link>
+          <a href="#" @click.prevent="navigateTo(item)" :class="{ active: isActive(item) }">
+            {{ item.label }}
+            <span v-if="item.path === '/cart' && cartCount > 0" class="cart-badge-inline">{{
+              cartCount
+            }}</span>
+          </a>
         </li>
       </ul>
     </div>
@@ -64,32 +63,18 @@
 }
 
 .navbar-menu li a:hover,
-.navbar-menu li a.router-link-active {
+.navbar-menu li a.active {
   color: #ff6b35;
 }
 
-.cart-icon {
-  position: relative;
-}
-
-.cart-icon a {
-  font-size: 24px;
-  text-decoration: none;
-}
-
-.cart-badge {
-  position: absolute;
-  top: -8px;
-  right: -8px;
+.cart-badge-inline {
+  display: inline-block;
   background: #ff6b35;
   color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  border-radius: 12px;
+  padding: 2px 8px;
   font-size: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-left: 4px;
   font-weight: bold;
 }
 </style>
