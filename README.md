@@ -225,19 +225,19 @@ The website features these main categories:
 
 <div align="center">
 
-    <p>Made with ❤️ for ERPNext community</p>
+<p>Made with ❤️ for ERPNext community</p>
 
-    <p>
-        <a href="https://github.com/abdopcnet/frappe_site">⭐ Star</a> •
-        <a href="https://github.com/abdopcnet/frappe_site/issues">🐛 Report Bug</a> •
-        <a href="https://github.com/abdopcnet/frappe_site/fork">🍴 Fork</a> •
-        <a href="https://github.com/abdopcnet/frappe_site/stargazers">👀 Watch</a>
-    </p>
+<p>
+    <a href="https://github.com/abdopcnet/frappe_site">⭐ Star</a> •
+    <a href="https://github.com/abdopcnet/frappe_site/issues">🐛 Report Bug</a> •
+    <a href="https://github.com/abdopcnet/frappe_site/fork">🍴 Fork</a> •
+    <a href="https://github.com/abdopcnet/frappe_site/stargazers">👀 Watch</a>
+</p>
 
-    <p>
-        <img src="https://img.shields.io/github/stars/abdopcnet/frappe_site?style=social" alt="GitHub stars">
-        <img src="https://img.shields.io/github/forks/abdopcnet/frappe_site?style=social" alt="GitHub forks">
-        <img src="https://img.shields.io/github/watchers/abdopcnet/frappe_site?style=social" alt="GitHub watchers">
-    </p>
+<p>
+    <img src="https://img.shields.io/github/stars/abdopcnet/frappe_site?style=social" alt="GitHub stars">
+    <img src="https://img.shields.io/github/forks/abdopcnet/frappe_site?style=social" alt="GitHub forks">
+    <img src="https://img.shields.io/github/watchers/abdopcnet/frappe_site?style=social" alt="GitHub watchers">
+</p>
 
 </div>
