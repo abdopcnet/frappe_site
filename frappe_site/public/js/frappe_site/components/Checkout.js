@@ -12,12 +12,12 @@ export default {
   setup() {
     const router = useRouter();
     const submitting = ref(false);
+    const orderSuccess = ref(false);
+    const orderError = ref('');
     const customerInfo = ref({
       name: '',
-      email: '',
       phone: '',
       address: '',
-      city: '',
     });
 
     const cartItems = computed(() => cartStore.state.items);
@@ -25,15 +25,17 @@ export default {
 
     async function submitOrder() {
       if (cartItems.value.length === 0) {
-        alert('Your cart is empty');
+        orderError.value = 'السلة فارغة';
         return;
       }
 
       submitting.value = true;
+      orderError.value = '';
+      orderSuccess.value = false;
 
       try {
         // Create customer first
-        let customerName = customerInfo.value.email;
+        let customerName = customerInfo.value.name;
 
         /* global frappe */
         await new Promise((resolve, reject) => {
@@ -46,15 +48,15 @@ export default {
                 customer_name: customerInfo.value.name,
                 customer_type: 'Individual',
                 customer_group: 'Individual',
-                email_id: customerInfo.value.email,
+                email_id: '',
                 mobile_no: customerInfo.value.phone,
                 address_line1: customerInfo.value.address,
-                city: customerInfo.value.city,
+                city: '',
               },
             },
             callback: (r) => {
               if (r && r.message) {
-                customerName = r.message.name || customerInfo.value.email;
+                customerName = r.message.name || customerInfo.value.name;
                 resolve();
               } else {
                 reject(r);
@@ -92,12 +94,16 @@ export default {
         // Clear cart
         cartStore.clearCart();
 
-        // Redirect to success page or show success message
-        alert('Order placed successfully!');
-        router.push({ name: 'Home' });
+        // Show success message
+        orderSuccess.value = true;
+
+        // Redirect to home after 3 seconds
+        setTimeout(() => {
+          router.push({ name: 'Home' });
+        }, 3000);
       } catch (error) {
         console.error('Error placing order:', error);
-        alert('Error placing order. Please try again.');
+        orderError.value = 'حدث خطأ أثناء إتمام الطلب. يرجى المحاولة مرة أخرى.';
       } finally {
         submitting.value = false;
       }
@@ -113,6 +119,8 @@ export default {
       cartItems,
       cartTotal,
       submitting,
+      orderSuccess,
+      orderError,
       submitOrder,
       formatPrice,
     };
