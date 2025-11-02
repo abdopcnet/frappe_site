@@ -1,12 +1,14 @@
 import { ref, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import Navbar from './Navbar.vue';
+import Slideshow from './Slideshow.vue';
 import ProductList from './ProductList.vue';
 
 export default {
   name: 'Products',
   components: {
     Navbar,
+    Slideshow,
     ProductList,
   },
   setup() {
