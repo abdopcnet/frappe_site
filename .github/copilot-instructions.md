@@ -1,4 +1,5 @@
 **Frappe Site Guide**
+
 - **App Layout**: `frappe_site/` is the Frappe app root; backend APIs live under `frappe_site/api/{doctype}/` and the website bundle ships from `frappe_site/public`.
 - **Backend Pattern**: each API module exports a single `@frappe.whitelist` function per file—mirror this when adding endpoints to stay compatible with Frappe’s import resolver.
 - **Guest Access**: Website calls expect `allow_guest=True`; omit it only for Desk-only flows or you will hit permission errors in the Vue app.
