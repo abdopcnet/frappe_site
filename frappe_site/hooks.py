@@ -25,12 +25,18 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/frappe_site/css/frappe_site.css"
-# app_include_js = "/assets/frappe_site/js/frappe_site.js"
+app_include_css = "/assets/frappe_site/css/frappe_site.css"
+app_include_js = [
+	"/assets/frappe_site/js/api_mapper.js",
+	"frappe_site.bundle.js",
+]
 
 # include js, css files in header of web template
-# web_include_css = "/assets/frappe_site/css/frappe_site.css"
-# web_include_js = "/assets/frappe_site/js/frappe_site.js"
+web_include_css = "/assets/frappe_site/css/frappe_site.css"
+web_include_js = [
+	"/assets/frappe_site/js/api_mapper.js",
+	"frappe_site.bundle.js",
+]
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "frappe_site/public/scss/website"
@@ -40,7 +46,7 @@ app_license = "mit"
 # webform_include_css = {"doctype": "public/css/doctype.css"}
 
 # include js in page
-# page_js = {"page" : "public/js/file.js"}
+page_js = {"sweets": "frappe_site.page.sweets.sweets"}
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
