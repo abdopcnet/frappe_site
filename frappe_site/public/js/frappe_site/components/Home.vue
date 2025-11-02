@@ -9,8 +9,8 @@
           <h2 class="section-title">Our Categories</h2>
           <div class="categories-grid" v-if="categories.length > 0">
             <div
-              v-for="category in categories"
-              :key="category.name"
+              v-for="(category, index) in categories"
+              :key="`category-${index}-${category.item_group_name || category.name}`"
               class="category-card"
               @click="goToProducts(category.item_group_name || category.name)"
             >
