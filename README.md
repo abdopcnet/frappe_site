@@ -52,6 +52,56 @@ A lightweight e-commerce website built on top of ERPNext's proven foundation:
 - 🔒 **Backend Policy:** [backend_policy.md](docs/backend_policy.md)
 - 🎨 **Frontend Policy:** [frontend_policy.md](docs/frontend_policy.md)
 
+## 💰 Development Collaboration
+
+- ⚠️ **Terms**: Tasks negotiated before beginning
+- 💵 **Payment:** to completed tasks only
+- 🤝 **Collaboration:** Professional and transparent
+- 🌐 **Payment Methods:**
+  - 💼 **International**:
+    - 🟢 [Fiverr](https://fiverr.com)
+    - 🔵 [Upwork](https://upwork.com)
+    - 💰 Western Union
+    - <img src="./imgs/tether_usdt.svg" width="16" height="16" alt="USDT"> Crypto
+  - <img src="./imgs/Egypt.svg" width="16" height="16" alt="Egypt Flag"> **Egypt**: Phone cash wallets
+  - <img src="./imgs/Saudi_Arabia.svg" width="16" height="16" alt="Saudi Arabia Flag"> **Saudi Arabia**: STC Pay, Alrajhi Bank Transfer
+
+## 🖥️ Development Server
+
+**Development Server:**
+
+- 🔗 Direct work via **SSH on single server**
+- 📦 Repository: [github.com/abdopcnet/frappe_site](https://github.com/abdopcnet/frappe_site)
+- 🌿 Branch: **main only**
+- 🔐 **Security:** Secure SSH access
+- 🚀 **Performance:** High-speed development environment
+
+## 🐢 Server Specifications
+
+**🐢 Server Specifications:**
+
+- 💾 **RAM:** 324 GB DDR5
+- 🔧 **CPU:** 2x AMD EPYC 9555
+- ⚡ **Cores/Threads:** 2024 cores / 128 threads
+- 🔋 **Power:** 360 Watt
+- 🌐 **Network:** High-speed connectivity
+- 💿 **Storage:** NVME optimized
+
+## ⚠️ Project POLICY
+
+**⚠️ Project POLICY:**
+
+- ⚠️ Changes into front conflicts improve policy
+- ⚠️ Changes into backend conflicts improve policy
+- ⚠️ Changes not asked for
+- ⚠️ Changing codebase structure
+- ⚠️ Changes not direct in ssh dev_server
+- ⚠️ Commits before review and test
+- ❌ will deleted
+- ❌ No payment
+- 🔒 **Quality Control:** Strict adherence to policies
+- 📋 **Review Process:** All changes must be reviewed
+
 ---
 
 ## 🛍️ Features
