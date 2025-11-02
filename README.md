@@ -2,10 +2,11 @@
 
 <div align="center">
 
-    <h2>Frappe Site E-Commerce</h2>
-    <p><em>Modern E-Commerce Website for ERPNext v15</em></p>
+## Frappe Site E-Commerce
 
-![Version](https://img.shields.io/badge/version-0.0.1-blue)
+_Modern E-Commerce Website for ERPNext v15_
+
+![Version](https://img.shields.io/badge/version-2.11.2025-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![ERPNext](https://img.shields.io/badge/ERPNext-v15-orange)
 ![Frappe](https://img.shields.io/badge/Frappe-v15-red)
