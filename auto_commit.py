@@ -23,56 +23,79 @@ def get_version_date():
 
 # Update version in __init__.py
 def update_version():
-    """Update __version__ in frappe_site/__init__.py."""
-    init_file = os.path.join(
-        os.path.dirname(__file__),
-        "frappe_site",
-        "__init__.py"
-    )
-    
+    """Update __version__ in frappe_site/__init__.py and README.md."""
+    base_dir = os.path.dirname(__file__)
+    init_file = os.path.join(base_dir, "frappe_site", "__init__.py")
+    readme_file = os.path.join(base_dir, "README.md")
+
+    # Get new version
+    new_version = get_version_date()
+
+    # Update __init__.py
     if not os.path.exists(init_file):
         print(f"Warning: {init_file} not found")
-        return False
-    
-    # Read current file
-    with open(init_file, 'r', encoding='utf-8') as f:
-        content = f.read()
-    
-    # Update version
-    new_version = get_version_date()
-    updated_content = f'__version__ = "{new_version}"'
-    
-    # Replace version line
-    lines = content.split('\n')
-    updated_lines = []
-    version_found = False
-    
-    for line in lines:
-        if line.strip().startswith('__version__'):
+    else:
+        # Read current file
+        with open(init_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        # Update version
+        updated_content = f'__version__ = "{new_version}"'
+
+        # Replace version line
+        lines = content.split('\n')
+        updated_lines = []
+        version_found = False
+
+        for line in lines:
+            if line.strip().startswith('__version__'):
+                updated_lines.append(updated_content)
+                version_found = True
+            else:
+                updated_lines.append(line)
+
+        # If version not found, add it
+        if not version_found:
             updated_lines.append(updated_content)
-            version_found = True
-        else:
-            updated_lines.append(line)
-    
-    # If version not found, add it
-    if not version_found:
-        updated_lines.append(updated_content)
-    
-    # Write updated content
-    with open(init_file, 'w', encoding='utf-8') as f:
-        f.write('\n'.join(updated_lines))
-    
-    print(f"✓ Updated version to: {new_version}")
+
+        # Write updated content
+        with open(init_file, 'w', encoding='utf-8') as f:
+            f.write('\n'.join(updated_lines))
+
+        print(f"✓ Updated __init__.py version to: {new_version}")
+
+    # Update README.md badge
+    if not os.path.exists(readme_file):
+        print(f"Warning: {readme_file} not found")
+    else:
+        # Read current file
+        with open(readme_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        # Update version badge
+        import re
+        # Pattern to match version badge: ![Version](...version-0.0.1-blue)
+        pattern = r'!\[Version\]\(https://img\.shields\.io/badge/version-[^)]+\)'
+        replacement = f'![Version](https://img.shields.io/badge/version-{new_version}-blue)'
+
+        updated_content = re.sub(pattern, replacement, content)
+
+        # Write updated content
+        with open(readme_file, 'w', encoding='utf-8') as f:
+            f.write(updated_content)
+
+        print(f"✓ Updated README.md version badge to: {new_version}")
+
     return True
 
 # Main execution
 if __name__ == "__main__":
     # Update version first
     update_version()
-    
+
     # Continue with git operations
     os.chdir(os.path.dirname(__file__))
-    
+
     # Get changed files
     files = subprocess.getoutput("git status --short").strip().split('\n')
     files = [f.split()[1] for f in files if f.strip()]
