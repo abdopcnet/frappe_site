@@ -6,6 +6,14 @@
       <!-- Categories Section -->
       <section class="categories-section">
         <div class="container">
+          <video 
+            src="/assets/frappe_site/js/frappe_site/assets/intro-video.mov" 
+            class="intro-video"
+            controls
+            autoplay
+            muted
+            loop
+          ></video>
           <h2 class="section-title">Our Categories</h2>
           <div class="categories-grid" v-if="categories.length > 0">
             <div
