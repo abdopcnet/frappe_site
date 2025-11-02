@@ -1,0 +1,26 @@
+**Frappe Site Guide**
+- **App Layout**: `frappe_site/` is the Frappe app root; backend APIs live under `frappe_site/api/{doctype}/` and the website bundle ships from `frappe_site/public`.
+- **Backend Pattern**: each API module exports a single `@frappe.whitelist` function per file—mirror this when adding endpoints to stay compatible with Frappe’s import resolver.
+- **Guest Access**: Website calls expect `allow_guest=True`; omit it only for Desk-only flows or you will hit permission errors in the Vue app.
+- **JSON Inputs**: JS callers often pass JSON-encoded strings; every handler guards with `isinstance(arg, str)` then `json.loads`—reuse that pattern for new payloads.
+- **Query Helpers**: Reads use `frappe.get_doc`/`frappe.get_all`; pricing is stitched in via `frappe.db.get_value("Item Price", {...}, order_by="valid_from desc")`, so extend the same logic when exposing catalog data.
+- **Write Ops**: Mutations always `insert`/`save` with `ignore_permissions=True` followed by `frappe.db.commit()`; forgetting the commit leaves the website with stale data.
+- **Customer Defaults**: Customer creation pulls `customer_group` and `territory` from `Selling Settings` if missing—respect that fallback to keep doctypes valid.
+- **Sales Orders**: `update_sales_order` rebuilds the `items` child table explicitly; when patching line-items, reset `sales_order.items = []` then append dicts to avoid orphan rows.
+- **Utilities**: Shared helpers sit in `frappe_site/api/utils.py` (Python currency formatter) and `public/js/frappe_site/utils/*.js`; check there before reimplementing formatting or image fallbacks.
+- **API Registry**: `frappe_site/public/js/api_mapper.js` is the single source of endpoint strings; update it alongside any new server method or the frontend will fall back to hardcoded dotted paths.
+- **Frontend Calls**: Components invoke `frappe.call` with `window.API_MAP` under the hood; return values must be JSON-serialisable dicts/lists for Vue to render without extra parsing.
+- **Vue Bootstrap**: `public/js/frappe_site/app/frappe_site_app.js` mounts Vue onto `#frappe-site-app`, registers `router`, `eventBus`, and `$frappe`; keep mutations inside `initFrappeSiteApp` so both Desk and Website contexts work.
+- **Routing**: `public/js/frappe_site/router/index.js` uses `createWebHashHistory()` to avoid clashing with Frappe URL rules; stick with hash routes unless you also add server-side rewrites.
+- **Component Pattern**: UI lives in `.vue` templates with `<script src="./Component.js">`; scripts import other `.vue` siblings, so add new composition logic in the adjacent `.js` file to keep the bundle happy.
+- **State Management**: `stores/cart.js` provides a reactive singleton with localStorage persistence; use `cartStore` helpers instead of duplicating cart math in components.
+- **Formatting Helpers**: `utils/currency.js` wraps `frappe.format` but strips HTML; call `formatCurrency` for prices and defer to `getImageUrl`/`handleImageError` for media placeholders.
+- **Asset Entry**: `public/js/frappe_site.bundle.js` just imports the app entry—ensure any new top-level module is reachable through that chain or the bench build will drop it.
+- **Asset Workflow**: After touching JS/CSS, run `bench build --app frappe_site --force` and `bench clear-cache`; the bundle lives under `/assets/frappe_site/js/` once built.
+- **Server Reload**: Backend Python changes require `bench restart`; when boot scripts change, restart plus `bench --site <site> clear-cache` prevents stale boot data.
+- **Bench Runtime**: Launch the stack from repo root with `bench start`; production installs live under the site `women.alkhaleej.store`, so use `bench --site women.alkhaleej.store ...` for site-scoped commands.
+- **Web Mount Point**: `frappe_site/www/index.html` extends `templates/web.html` and injects `<div id="frappe-site-app"></div>`; any new website page must provide that container or call `initFrappeSiteApp` manually.
+- **Desk Hooks**: `hooks.py` registers `app_include_js/css` plus `page_js` for `sweets`; custom JS like `public/js/sales_order.js` still uses classic `frappe.ui.form.on`.
+- **Python Style**: Formatting is governed by `pyproject.toml` (`ruff` with tab indentation, 110-char lines, double quotes); keep those conventions to avoid lint churn.
+- **Legacy Folder**: `old_pos_app/posawesome15_lite/` is a reference POS app—do not modify or copy from it unless explicitly told; focus changes in `frappe_site/`.
+- **Testing Gap**: No automated tests exist; manual checks should include API calls via `frappe.call` and verification in the Vue UI after rebuilding assets.
