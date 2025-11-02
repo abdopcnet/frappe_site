@@ -3,7 +3,7 @@
 
 import frappe
 from frappe import _
-from frappe.utils import nowdate
+from frappe.utils import nowdate, add_days
 
 
 @frappe.whitelist(allow_guest=True)
@@ -20,12 +20,15 @@ def create_sales_order(order_data):
 	if not order_data.get("items") or len(order_data.get("items", [])) == 0:
 		frappe.throw(_("At least one item is required"))
 
+	# Set default delivery date if not provided (7 days from today)
+	delivery_date = order_data.get("delivery_date") or add_days(nowdate(), 7)
+
 	# Create sales order
 	sales_order = frappe.get_doc({
 		"doctype": "Sales Order",
 		"customer": order_data.get("customer"),
 		"transaction_date": order_data.get("transaction_date") or nowdate(),
-		"delivery_date": order_data.get("delivery_date"),
+		"delivery_date": delivery_date,
 		"items": order_data.get("items", []),
 	})
 
