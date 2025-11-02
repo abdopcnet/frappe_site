@@ -7,7 +7,7 @@
         class="slide"
         :class="{ active: index === currentSlide }"
       >
-        <img :src="slide.image" :alt="slide.heading" />
+        <img :src="getImageUrl(slide.image)" :alt="slide.heading" @error="handleImageError" />
         <div class="slide-content" v-if="slide.heading || slide.description">
           <h2 v-if="slide.heading">{{ slide.heading }}</h2>
           <p v-if="slide.description">{{ slide.description }}</p>
