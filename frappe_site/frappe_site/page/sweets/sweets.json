@@ -1,0 +1,19 @@
+{
+ "content": null,
+ "creation": "2025-11-02 08:42:56.823727",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2025-11-02 09:30:16.214137",
+ "modified_by": "Administrator",
+ "module": "Frappe Site",
+ "name": "sweets",
+ "owner": "Administrator",
+ "page_name": "sweets",
+ "roles": [],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "sweets"
+}
