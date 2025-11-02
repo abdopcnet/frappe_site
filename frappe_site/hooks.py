@@ -248,3 +248,9 @@ page_js = {"sweets": "frappe_site.page.sweets.sweets"}
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+fixtures = [
+    {"doctype": "Custom Field", "filters": [["module", "=", "Frappe Site"]]},
+    {"doctype": "Property Setter", "filters": [["module", "=", "Frappe Site"]]},
+    {"doctype": "Client Script", "filters": [["module", "=", "Frappe Site"]]},
+    {"doctype": "Server Script", "filters": [["module", "=", "Frappe Site"]]},
+]
