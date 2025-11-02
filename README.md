@@ -22,6 +22,8 @@ _Modern E-Commerce Website for ERPNext v15_
 - 🌐 [Big Bird Foods](https://bigbirdfoods.com.pk/)
 - 🍰 [Habibah Sweets](https://habibahsweets.com/)
 
+📺 **Videos:** [YouTube Playlist](https://www.youtube.com/playlist?list=PLCU8QrFs82Wxqp64n6VjZJKW5Nl3WCW8g)
+
 **Frappe Site E-Commerce** = Modern E-Commerce Interface + ERPNext Engine
 
 A lightweight e-commerce website built on top of ERPNext's proven foundation:
@@ -45,7 +47,6 @@ A lightweight e-commerce website built on top of ERPNext's proven foundation:
 
 - 🔧 **Development Commands:** [dev_common_commands.md](docs/dev_common_commands.md)
 - 📊 **Technology Stack:** [technology_stack_info.md](docs/technology_stack_info.md)
-- 📺 **Video Tutorials:** [YouTube Playlist](https://www.youtube.com/playlist?list=PLCU8QrFs82Wxqp64n6VjZJKW5Nl3WCW8g)
 
 ### 🛡️ **Security & Policies**
 
