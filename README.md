@@ -20,6 +20,7 @@ _Modern E-Commerce Website for ERPNext v15_
 **Built exactly like:**
 
 - 🌐 [Big Bird Foods](https://bigbirdfoods.com.pk/)
+- 🍰 [Habibah Sweets](https://habibahsweets.com/)
 
 📺 **Videos:** [YouTube Playlist](https://www.youtube.com/playlist?list=PLCU8QrFs82Wxqp64n6VjZJKW5Nl3WCW8g)
 
@@ -58,13 +59,13 @@ A lightweight e-commerce website built on top of ERPNext's proven foundation:
 - 💵 **Payment:** to completed tasks only
 - 🤝 **Collaboration:** Professional and transparent
 - 🌐 **Payment Methods:**
-  - 💼 **International**:
-    - 🟢 [Fiverr](https://fiverr.com)
-    - 🔵 [Upwork](https://upwork.com)
-    - 💰 Western Union
-    - <img src="./imgs/tether_usdt.svg" width="16" height="16" alt="USDT"> Crypto
-  - <img src="./imgs/Egypt.svg" width="16" height="16" alt="Egypt Flag"> **Egypt**: Phone cash wallets
-  - <img src="./imgs/Saudi_Arabia.svg" width="16" height="16" alt="Saudi Arabia Flag"> **Saudi Arabia**: STC Pay, Alrajhi Bank Transfer
+- 💼 **International**:
+  - 🟢 [Fiverr](https://fiverr.com)
+  - 🔵 [Upwork](https://upwork.com)
+  - 💰 Western Union
+  - <img src="./imgs/tether_usdt.svg" width="16" height="16" alt="USDT"> Crypto
+- <img src="./imgs/Egypt.svg" width="16" height="16" alt="Egypt Flag"> **Egypt**: Phone cash wallets
+- <img src="./imgs/Saudi_Arabia.svg" width="16" height="16" alt="Saudi Arabia Flag"> **Saudi Arabia**: STC Pay, Alrajhi Bank Transfer
 
 ## 🖥️ Development Server
 
@@ -101,6 +102,39 @@ A lightweight e-commerce website built on top of ERPNext's proven foundation:
 - ❌ No payment
 - 🔒 **Quality Control:** Strict adherence to policies
 - 📋 **Review Process:** All changes must be reviewed
+
+---
+
+## 👨‍💻 Contact
+
+<div align="center">
+    <img src="./imgs/ERPNext-support.png" height="200" alt="Future Support" style="border-radius: 20px;">
+</div>
+
+- 👨‍💻 Developer: abdopcnet
+- 🏢 Company: [Future Support](https://www.future-support.online/)
+- 📧 Email: <abdopcnet@gmail.com>
+- 🐙 GitHub: [github.com/abdopcnet/frappe_site](https://github.com/abdopcnet/frappe_site)
+
+**🤝 Need Support or Want to Join? Contact Now:**
+
+### <img src="./imgs/Egypt.svg" width="20" height="20" alt="Egypt Flag"> Egypt Contact
+
+- 📞 **Call:** <img src="./imgs/Egypt.svg" width="16" height="16" alt="Egypt Flag"> [+20 115 648 3669](tel:+201156483669)
+- <img src="./imgs/whatsapp.svg" width="16" height="16" alt="WhatsApp"> **WhatsApp:** <img src="./imgs/Egypt.svg" width="16" height="16" alt="Egypt Flag"> [https://wa.me/201156483669](https://wa.me/201156483669)
+- <img src="./imgs/telegram.svg" width="16" height="16" alt="Telegram"> **Telegram:** [https://t.me/EG_01156483669](https://t.me/EG_01156483669)
+
+### <img src="./imgs/Saudi_Arabia.svg" width="20" height="20" alt="Saudi Arabia Flag"> Saudi Arabia Contact
+
+- 📞 **Call:** <img src="./imgs/Saudi_Arabia.svg" width="16" height="16" alt="Saudi Arabia Flag"> [+966 57 891 9729](tel:+966578919729)
+- <img src="./imgs/whatsapp.svg" width="16" height="16" alt="WhatsApp"> **WhatsApp:** <img src="./imgs/Saudi_Arabia.svg" width="16" height="16" alt="Saudi Arabia Flag"> [https://wa.me/966578919729](https://wa.me/966578919729)
+- <img src="./imgs/telegram.svg" width="16" height="16" alt="Telegram"> **Telegram:** [https://t.me/KSA_0578919729](https://t.me/KSA_0578919729)
+
+### 🌐 Online
+
+- 🌐 **Website:** [future-support.online](https://www.future-support.online/)
+- 📧 **Email:** <abdopcnet@gmail.com>
+- 🐙 **GitHub:** [github.com/abdopcnet/frappe_site](https://github.com/abdopcnet/frappe_site)
 
 ---
 
@@ -261,35 +295,6 @@ The website features these main categories:
 - `/products/:id` - Product detail page
 - `/cart` - Shopping cart
 - `/checkout` - Checkout page
-
----
-
-## 👨‍💻 Contact
-
-- 👨‍💻 Developer: abdopcnet
-- 🏢 Company: [Future Support](https://www.future-support.online/)
-- 📧 Email: abdopcnet@gmail.com
-- 🐙 GitHub: [github.com/abdopcnet/frappe_site](https://github.com/abdopcnet/frappe_site)
-
-**🤝 Need Support or Want to Join? Contact Now:**
-
-### 🇪🇬 Egypt Contact
-
-- 📞 **Call:** 🇪🇬 [+20 115 648 3669](tel:+201156483669)
-- 💬 **WhatsApp:** 🇪🇬 [https://wa.me/201156483669](https://wa.me/201156483669)
-- 📱 **Telegram:** [https://t.me/EG_01156483669](https://t.me/EG_01156483669)
-
-### 🇸🇦 Saudi Arabia Contact
-
-- 📞 **Call:** 🇸🇦 [+966 57 891 9729](tel:+966578919729)
-- 💬 **WhatsApp:** 🇸🇦 [https://wa.me/966578919729](https://wa.me/966578919729)
-- 📱 **Telegram:** [https://t.me/KSA_0578919729](https://t.me/KSA_0578919729)
-
-### 🌐 Online
-
-- 🌐 **Website:** [future-support.online](https://www.future-support.online/)
-- 📧 **Email:** abdopcnet@gmail.com
-- 🐙 **GitHub:** [github.com/abdopcnet/frappe_site](https://github.com/abdopcnet/frappe_site)
 
 ---
 
