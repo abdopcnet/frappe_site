@@ -5,10 +5,15 @@ frappe.pages['sweets'].on_page_load = function (wrapper) {
     single_column: true,
   });
 
-  // Create container for Vue app
-  const container = $("<div id='frappe-site-app'></div>");
-  page.main.append(container);
+  this.page.$FrappeSiteSweets = new frappe.FrappeSite.sweets(this.page);
 
-  // Vue app will initialize automatically from frappe_site.bundle.js
-  // No need to import manually - it's already loaded via hooks.py
+  // Hide sidebar to show full page (like posawesome15_lite)
+  $('head').append(
+    '<style class="frappe-site-page-style">.layout-main-section { display: none !important; }</style>',
+  );
+};
+
+frappe.pages['sweets'].on_page_leave = function () {
+  // Remove the style when leaving the page
+  $('head').find('style.frappe-site-page-style').remove();
 };
