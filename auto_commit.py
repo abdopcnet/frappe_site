@@ -1,26 +1,95 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Auto commit script for frappe_site.
+Updates version in __init__.py before committing.
+"""
+
+import os
 import subprocess
+from datetime import datetime
 
 # Emojis by extension
 EMOJI = {'.js': '🔄', '.vue': '💄', '.py': '🐍', '.md': '📝', '.json': '📋', '.css': '🎨', '.html': '🌐'}
 
-# Get changed files
-files = subprocess.getoutput("git status --short").strip().split('\n')
-files = [f.split()[1] for f in files if f.strip()]
+# Get current date in DD.MM.YYYY format (no leading zeros)
+def get_version_date():
+    """Get current date formatted as version (DD.MM.YYYY, no leading zeros)."""
+    now = datetime.now()
+    day = now.day  # No leading zero
+    month = now.month  # No leading zero
+    year = now.year
+    return f"{day}.{month}.{year}"
 
-if not files:
-    print("✅ No changes")
-    exit()
+# Update version in __init__.py
+def update_version():
+    """Update __version__ in frappe_site/__init__.py."""
+    init_file = os.path.join(
+        os.path.dirname(__file__),
+        "frappe_site",
+        "__init__.py"
+    )
+    
+    if not os.path.exists(init_file):
+        print(f"Warning: {init_file} not found")
+        return False
+    
+    # Read current file
+    with open(init_file, 'r', encoding='utf-8') as f:
+        content = f.read()
+    
+    # Update version
+    new_version = get_version_date()
+    updated_content = f'__version__ = "{new_version}"'
+    
+    # Replace version line
+    lines = content.split('\n')
+    updated_lines = []
+    version_found = False
+    
+    for line in lines:
+        if line.strip().startswith('__version__'):
+            updated_lines.append(updated_content)
+            version_found = True
+        else:
+            updated_lines.append(line)
+    
+    # If version not found, add it
+    if not version_found:
+        updated_lines.append(updated_content)
+    
+    # Write updated content
+    with open(init_file, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(updated_lines))
+    
+    print(f"✓ Updated version to: {new_version}")
+    return True
 
-# Commit each file
-for f in files:
-    ext = f[f.rfind('.'):] if '.' in f else ''
-    emoji = EMOJI.get(ext, '📄')
-    filename = f.split('/')[-1]  # Get only filename without path
-    subprocess.run(f"git add {f}", shell=True)
-    subprocess.run(f'git commit -m "{emoji} {filename}"', shell=True)
+# Main execution
+if __name__ == "__main__":
+    # Update version first
+    update_version()
+    
+    # Continue with git operations
+    os.chdir(os.path.dirname(__file__))
+    
+    # Get changed files
+    files = subprocess.getoutput("git status --short").strip().split('\n')
+    files = [f.split()[1] for f in files if f.strip()]
 
-# Check if no more changes, then push
-if not subprocess.getoutput("git status --porcelain"):
-    subprocess.run("git push origin main", shell=True)
-    print("✅ Done")
+    if not files:
+        print("✅ No changes")
+        exit()
+
+    # Commit each file
+    for f in files:
+        ext = f[f.rfind('.'):] if '.' in f else ''
+        emoji = EMOJI.get(ext, '📄')
+        filename = f.split('/')[-1]  # Get only filename without path
+        subprocess.run(f"git add {f}", shell=True)
+        subprocess.run(f'git commit -m "{emoji} {filename}"', shell=True)
+
+    # Check if no more changes, then push
+    if not subprocess.getoutput("git status --porcelain"):
+        subprocess.run("git push origin main", shell=True)
+        print("✅ Done")
