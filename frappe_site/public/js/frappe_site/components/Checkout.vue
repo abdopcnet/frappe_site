@@ -35,6 +35,15 @@
                 <label>العنوان *</label>
                 <textarea v-model="customerInfo.address" required></textarea>
               </div>
+              <div class="form-group">
+                <label>تاريخ التسليم *</label>
+                <input
+                  v-model="customerInfo.delivery_date"
+                  type="date"
+                  :min="minDeliveryDate"
+                  required
+                />
+              </div>
               <button type="submit" class="submit-btn" :disabled="submitting">
                 {{ submitting ? 'جاري المعالجة...' : 'إتمام الطلب' }}
               </button>
