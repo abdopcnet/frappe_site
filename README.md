@@ -35,6 +35,24 @@ A lightweight e-commerce website built on top of ERPNext's proven foundation:
 
 ---
 
+## 📋 Development Tasks Tracking
+
+### 📋 Needed Tasks
+
+📁 **Tasks folder:** [needed_tasks/](needed_tasks/)
+
+### 🛠️ **Development Resources**
+
+- 🔧 **Development Commands:** [dev_common_commands.md](docs/dev_common_commands.md)
+- 📊 **Technology Stack:** [technology_stack_info.md](docs/technology_stack_info.md)
+
+### 🛡️ **Security & Policies**
+
+- 🔒 **Backend Policy:** [backend_policy.md](docs/backend_policy.md)
+- 🎨 **Frontend Policy:** [frontend_policy.md](docs/frontend_policy.md)
+
+---
+
 ## 🛍️ Features
 
 - 🛒 **Shopping Cart** - Full cart management with localStorage
@@ -151,7 +169,7 @@ frappe_site/api/
 
 The website features these main categories:
 
-- 🍰 **حلوبات الاندلس** (Andalusian Sweets)
+- 🍰 **حلويات الاندلس** (Andalusian Sweets)
 - 🍖 **مأكولات مذاق النبلاء** (Noble Taste Foods)
 - 🎉 **عروض الحفلات والمناسبات** (Party & Event Offers)
 
