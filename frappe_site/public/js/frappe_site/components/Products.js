@@ -20,8 +20,8 @@ export default {
     // Featured categories (hardcoded)
     const featuredCategories = [
       {
-        name: 'حلوبات الاندلس',
-        item_group_name: 'حلوبات الاندلس',
+        name: 'حلويات الاندلس',
+        item_group_name: 'حلويات الاندلس',
         image: null,
         is_featured: true,
       },
