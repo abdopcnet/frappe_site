@@ -18,6 +18,7 @@ export default {
       name: '',
       phone: '',
       address: '',
+      delivery_date: '',
     });
 
     const cartItems = computed(() => cartStore.state.items);
@@ -26,6 +27,22 @@ export default {
     async function submitOrder() {
       if (cartItems.value.length === 0) {
         orderError.value = 'السلة فارغة';
+        return;
+      }
+
+      // Validate delivery date
+      if (!customerInfo.value.delivery_date) {
+        orderError.value = 'يرجى اختيار تاريخ التسليم';
+        return;
+      }
+
+      const deliveryDate = new Date(customerInfo.value.delivery_date);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      deliveryDate.setHours(0, 0, 0, 0);
+
+      if (deliveryDate < today) {
+        orderError.value = 'تاريخ التسليم لا يمكن أن يكون قبل اليوم';
         return;
       }
 
@@ -74,6 +91,8 @@ export default {
             args: {
               order_data: {
                 customer: customerName,
+                transaction_date: new Date().toISOString().split('T')[0], // Today's date
+                delivery_date: customerInfo.value.delivery_date,
                 items: cartItems.value.map((item) => ({
                   item_code: item.id,
                   qty: item.quantity,
@@ -114,6 +133,12 @@ export default {
       return formatCurrency(price);
     }
 
+    // Get minimum delivery date (today)
+    const minDeliveryDate = computed(() => {
+      const today = new Date();
+      return today.toISOString().split('T')[0];
+    });
+
     return {
       customerInfo,
       cartItems,
@@ -121,6 +146,7 @@ export default {
       submitting,
       orderSuccess,
       orderError,
+      minDeliveryDate,
       submitOrder,
       formatPrice,
     };
