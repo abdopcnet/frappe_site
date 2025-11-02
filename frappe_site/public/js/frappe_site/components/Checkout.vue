@@ -6,35 +6,42 @@
         <h1>Checkout</h1>
         <div class="checkout-content">
           <div class="checkout-form">
-            <h2>Customer Information</h2>
-            <form @submit.prevent="submitOrder">
+            <h2>معلومات العميل</h2>
+
+            <!-- Success Message -->
+            <div v-if="orderSuccess" class="success-message">
+              <div class="success-icon">✓</div>
+              <h3>تم إتمام الطلب بنجاح!</h3>
+              <p>شكراً لك. سيتم توجيهك إلى الصفحة الرئيسية...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div v-if="orderError" class="error-message">
+              <div class="error-icon">✗</div>
+              <p>{{ orderError }}</p>
+            </div>
+
+            <!-- Order Form -->
+            <form v-if="!orderSuccess" @submit.prevent="submitOrder">
               <div class="form-group">
-                <label>Full Name *</label>
+                <label>الاسم *</label>
                 <input v-model="customerInfo.name" type="text" required />
               </div>
               <div class="form-group">
-                <label>Email *</label>
-                <input v-model="customerInfo.email" type="email" required />
-              </div>
-              <div class="form-group">
-                <label>Phone *</label>
+                <label>رقم الهاتف *</label>
                 <input v-model="customerInfo.phone" type="tel" required />
               </div>
               <div class="form-group">
-                <label>Address *</label>
+                <label>العنوان *</label>
                 <textarea v-model="customerInfo.address" required></textarea>
               </div>
-              <div class="form-group">
-                <label>City *</label>
-                <input v-model="customerInfo.city" type="text" required />
-              </div>
               <button type="submit" class="submit-btn" :disabled="submitting">
-                {{ submitting ? 'Processing...' : 'Place Order' }}
+                {{ submitting ? 'جاري المعالجة...' : 'إتمام الطلب' }}
               </button>
             </form>
           </div>
           <div class="order-summary">
-            <h2>Order Summary</h2>
+            <h2>ملخص الطلب</h2>
             <div class="summary-items">
               <div v-for="item in cartItems" :key="item.id" class="summary-item">
                 <span>{{ item.name }} x {{ item.quantity }}</span>
@@ -42,7 +49,7 @@
               </div>
             </div>
             <div class="summary-total">
-              <span>Total:</span>
+              <span>الإجمالي:</span>
               <span>{{ formatPrice(cartTotal) }}</span>
             </div>
           </div>
@@ -146,5 +153,52 @@
   .checkout-content {
     grid-template-columns: 1fr;
   }
+}
+
+.success-message {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.success-icon {
+  font-size: 48px;
+  color: #28a745;
+  margin-bottom: 16px;
+}
+
+.success-message h3 {
+  color: #155724;
+  margin: 0 0 8px 0;
+  font-size: 24px;
+}
+
+.success-message p {
+  color: #155724;
+  margin: 0;
+}
+
+.error-message {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.error-icon {
+  font-size: 24px;
+  color: #721c24;
+}
+
+.error-message p {
+  color: #721c24;
+  margin: 0;
 }
 </style>
