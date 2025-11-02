@@ -17,28 +17,6 @@ export default {
     const searchQuery = ref('');
     const selectedCategory = ref(null);
 
-    // Featured categories (hardcoded)
-    const featuredCategories = [
-      {
-        name: 'حلويات الاندلس',
-        item_group_name: 'حلويات الاندلس',
-        image: null,
-        is_featured: true,
-      },
-      {
-        name: 'مأكولات مذاق النبلاء',
-        item_group_name: 'مأكولات مذاق النبلاء',
-        image: null,
-        is_featured: true,
-      },
-      {
-        name: 'عروض الحفلات والمناسبات',
-        item_group_name: 'عروض الحفلات والمناسبات',
-        image: null,
-        is_featured: true,
-      },
-    ];
-
     // Load categories
     function loadCategories() {
       /* global frappe */
@@ -47,30 +25,38 @@ export default {
           window.API_MAP?.ITEM_GROUP?.GET_MANY_ITEM_GROUPS ||
           'frappe_site.api.item_group.get_many_item_groups.get_many_item_groups',
         args: {
-          filters: {},
+          filters: {
+            custom_website_group: 1,
+          },
           limit: 50,
         },
         callback: (r) => {
           if (r && r.message) {
+            // Filter and deduplicate categories
             const apiCategories = r.message || [];
 
-            // Merge featured categories with API categories
-            const allCategories = [...featuredCategories];
+            // Filter only categories with custom_website_group=1
+            const filteredCategories = apiCategories.filter(
+              (cat) => cat.custom_website_group === 1,
+            );
 
-            // Add API categories that are not in featured list
-            apiCategories.forEach((cat) => {
-              const exists = featuredCategories.find(
-                (fc) => fc.name === cat.name || fc.item_group_name === cat.item_group_name,
-              );
-              if (!exists) {
-                allCategories.push(cat);
+            // Remove duplicates based on name or item_group_name
+            const uniqueCategories = [];
+            const seen = new Set();
+
+            filteredCategories.forEach((cat) => {
+              const key = cat.item_group_name || cat.name;
+              if (key && !seen.has(key)) {
+                seen.add(key);
+                uniqueCategories.push(cat);
               }
             });
 
-            categories.value = allCategories;
+            // Only show categories from API that have custom_website_group=1
+            categories.value = uniqueCategories;
           } else {
-            // If API fails, use featured categories only
-            categories.value = featuredCategories;
+            // If API fails, show empty array
+            categories.value = [];
           }
         },
       });
